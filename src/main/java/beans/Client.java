@@ -1,9 +1,12 @@
+package beans;
+
 /**
  * Created by BELSHINA on 28.11.2017.
  */
 public class Client {
     String id;
     String fullName;
+
     public Client(String id, String fullName) {
         this.id = id;
         this.fullName = fullName;
