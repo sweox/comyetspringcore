@@ -1,5 +1,7 @@
 package loggers;
 
+import beans.Event;
+
 /**
  * Created by BELSHINA on 28.11.2017.
  */
