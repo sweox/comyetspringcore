@@ -16,6 +16,7 @@ public class FileEventLogger implements EventLogger {
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
     }
+
     public void logEvent(Event event) {
         try {
             FileUtils.writeStringToFile(file, event.toString()+"\r\n" , true);
