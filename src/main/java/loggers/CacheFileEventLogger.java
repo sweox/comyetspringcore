@@ -27,7 +27,6 @@ public class CacheFileEventLogger extends FileEventLogger {
         }
     }
 
-
     public CacheFileEventLogger(String fileName, int cachSize) {
         super(fileName);
         this.cachSize = cachSize;
