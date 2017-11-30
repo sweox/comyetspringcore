@@ -22,10 +22,11 @@
     </bean>
 
     <bean id="consoleEventLogger" class="loggers.ConsoleEventLogger"></bean>
-    <bean id="fileEventLogger" class="loggers.FileEventLogger" init-method="init">
+    <bean id="fileEventLogger" class="loggers.FileEventLogger" >
         <constructor-arg value="C:/testFile.txt"/>
     </bean>
-    <bean id="cacheFileEventLogger" class="loggers.CacheFileEventLogger" destroy-method="destroy">
+    <bean id="cacheFileEventLogger" class="loggers.CacheFileEventLogger"
+          init-method="init" destroy-method="destroy">
         <constructor-arg value="C:/testFile.txt"/>
         <constructor-arg value="2"/>
     </bean>
