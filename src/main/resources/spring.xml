@@ -28,7 +28,7 @@
     <bean id="cacheFileEventLogger" class="loggers.CacheFileEventLogger"
           init-method="init" destroy-method="destroy">
         <constructor-arg value="C:/testFile.txt"/>
-        <constructor-arg value="2"/>
+        <constructor-arg value="3"/>
     </bean>
 
     <bean id="app" class="App">

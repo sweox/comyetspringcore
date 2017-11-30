@@ -17,13 +17,13 @@ public class CacheFileEventLogger extends FileEventLogger {
         if (cache.size() == cachSize) {
             writeEventsFromCache();
             cache.clear();
+            System.out.println("Events has been cached after clear list");
         }
     }
 
     private void writeEventsFromCache() {
         for(Event event:cache) {
             super.logEvent(event);
-            System.out.println("Events has been cached");
         }
     }
 
@@ -37,6 +37,7 @@ public class CacheFileEventLogger extends FileEventLogger {
     public void destroy() {
         if(!cache.isEmpty()) {
             writeEventsFromCache();
+            System.out.println("Events has been cached after destroy");
         }
     }
 }
