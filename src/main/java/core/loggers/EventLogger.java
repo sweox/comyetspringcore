@@ -1,6 +1,6 @@
-package loggers;
+package core.loggers;
 
-import beans.Event;
+import core.beans.Event;
 
 /**
  * Created by BELSHINA on 28.11.2017.

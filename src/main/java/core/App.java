@@ -1,12 +1,14 @@
-import beans.Client;
-import beans.Event;
-import beans.EventType;
-import loggers.EventLogger;
+package core;
+
+import core.beans.Client;
+import core.beans.Event;
+import core.beans.EventType;
+import core.loggers.EventLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
-import spring.AppConfig;
-import spring.LoggerConfig;
+import core.spring.AppConfig;
+import core.spring.LoggerConfig;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -31,8 +33,8 @@ public class App {
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(AppConfig.class, LoggerConfig.class);
-        //ctx.scan("java");
-        //ctx.refresh();
+        ctx.scan("core");
+        ctx.refresh();
 
         App app = (App) ctx.getBean("app");
 
@@ -54,6 +56,7 @@ public class App {
         ctx.close();
     }
 
+    public App() {}
     public App(Client client, EventLogger eventLogger, Map<EventType, EventLogger> loggers) {
         this.client = client;
         this.defaultLogger = eventLogger;

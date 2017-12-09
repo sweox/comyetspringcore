@@ -1,4 +1,4 @@
-package beans;
+package core.beans;
 
 /**
  * Created by BELSHINA on 28.11.2017.

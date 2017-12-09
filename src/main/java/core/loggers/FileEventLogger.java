@@ -1,10 +1,11 @@
-package loggers;
+package core.loggers;
 
-import beans.Event;
+import core.beans.Event;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 
@@ -32,6 +33,7 @@ public class FileEventLogger implements EventLogger {
         } catch (IOException e) {e.printStackTrace();}
     }
 
+    @PostConstruct
     public void init() throws IOException {
         this.file = new File(fileName);
 

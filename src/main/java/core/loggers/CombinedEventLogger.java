@@ -1,11 +1,10 @@
-package loggers;
+package core.loggers;
 
-import beans.Event;
+import core.beans.Event;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by BELSHINA on 30.11.2017.
@@ -16,8 +15,8 @@ public class CombinedEventLogger implements EventLogger {
     @Resource(name = "combinedLoggers")
     private Collection<EventLogger> loggers;
 
-//    public CombinedEventLogger(List<EventLogger> loggers) {
-//        this.loggers = loggers;
+//    public CombinedEventLogger(List<EventLogger> core.loggers) {
+//        this.core.loggers = core.loggers;
 //    }
 
     public void logEvent(Event event) {

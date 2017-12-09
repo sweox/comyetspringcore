@@ -1,7 +1,6 @@
-package loggers;
+package core.loggers;
 
-import beans.Event;
-import org.springframework.beans.factory.annotation.Autowired;
+import core.beans.Event;
 import org.springframework.stereotype.Component;
 
 /**

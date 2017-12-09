@@ -1,6 +1,6 @@
-package spring;
+package core.spring;
 
-import beans.Client;
+import core.beans.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

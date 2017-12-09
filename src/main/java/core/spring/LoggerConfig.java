@@ -1,8 +1,7 @@
-package spring;
+package core.spring;
 
-import beans.EventType;
-import loggers.EventLogger;
-import org.springframework.beans.factory.annotation.Autowired;
+import core.beans.EventType;
+import core.loggers.EventLogger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
