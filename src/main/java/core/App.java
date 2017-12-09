@@ -36,7 +36,7 @@ public class App {
         ctx.scan("core");
         ctx.refresh();
 
-        App app = (App) ctx.getBean("app");
+        App app = (App)ctx.getBean("app");
 
         Client client = ctx.getBean(Client.class);
         System.out.println("Client says: " + client.getGreeting());
