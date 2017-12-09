@@ -1,17 +1,27 @@
-package loggers;
+package core.loggers;
 
-import beans.Event;
+import core.beans.Event;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 
 /**
  * Created by BELSHINA on 29.11.2017.
  */
+
+@Component
 public class FileEventLogger implements EventLogger {
+    @Value("${events.file:target/events_log.txt}")
     String fileName;
-    File file;
+
+    private File file;
+
+    public FileEventLogger() {
+    }
 
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
@@ -23,6 +33,7 @@ public class FileEventLogger implements EventLogger {
         } catch (IOException e) {e.printStackTrace();}
     }
 
+    @PostConstruct
     public void init() throws IOException {
         this.file = new File(fileName);
 
