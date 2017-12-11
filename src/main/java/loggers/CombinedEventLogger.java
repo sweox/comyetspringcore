@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class CombinedEventLogger extends AbstractLogger {
 
-    private Collection<EventLogger> loggers;
+    private final Collection<EventLogger> loggers;
 
     public CombinedEventLogger(List<EventLogger> loggers) {
         this.loggers = loggers;

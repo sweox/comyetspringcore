@@ -1,3 +1,4 @@
+import aspects.StatisticsAspect;
 import beans.Client;
 import beans.Event;
 import beans.EventType;
@@ -11,10 +12,11 @@ import java.util.Map;
  * Created by BELSHINA on 28.11.2017.
  */
 public class App {
-    Client client;
-    EventLogger defaultLogger;
-    Map<EventType, EventLogger> loggers;
+    private Client client;
+    private EventLogger defaultLogger;
+    private Map<EventType, EventLogger> loggers;
     private String startupMessage;
+    private StatisticsAspect statisticsAspect;
 
     public static void main(String[] args) {
 
@@ -38,6 +40,8 @@ public class App {
         event = ctx.getBean(Event.class);
         app.logEvent(EventType.INFO, event, "Some event for 4");
 
+        app.outputLoggingCounter();
+
         ctx.close();
     }
 
@@ -58,8 +62,21 @@ public class App {
         logger.logEvent(event);
     }
 
+    private void outputLoggingCounter() {
+        if (statisticsAspect != null) {
+            System.out.println("Loggers statistics. Number of calls: ");
+            for (Map.Entry<Class<?>, Integer> entry: statisticsAspect.getCounter().entrySet()) {
+                System.out.println("    " + entry.getKey().getSimpleName() + ": " + entry.getValue());
+            }
+        }
+    }
+
     public void setStartupMessage(String startupMessage) {
         this.startupMessage = startupMessage;
+    }
+
+    public void setStatisticsAspect(StatisticsAspect statisticsAspect) {
+        this.statisticsAspect = statisticsAspect;
     }
 
     public EventLogger getDefaultLogger() {
