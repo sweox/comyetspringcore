@@ -1,11 +1,11 @@
 package core.beans;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -21,12 +21,17 @@ public class Event {
     private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
     private String msg;
 
-    @Autowired
-    @Qualifier("newDate")
+
+    @Value("#{new java.util.Date()}")
     private Date date;
 
-    @Autowired
+    @Value("#{T(java.text.DateFormat).getDateTimeInstance()}")
     private DateFormat dateFormat;
+
+    public static boolean isDay(int start, int end) {
+        LocalTime time = LocalTime.now();
+        return time.getHour() > start && time.getHour() < end;
+    }
 
     public Event() {
         this.id = AUTO_ID.getAndIncrement();

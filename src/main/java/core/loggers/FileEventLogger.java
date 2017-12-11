@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 
 @Component
-public class FileEventLogger implements EventLogger {
+public class FileEventLogger extends AbstractLogger {
     @Value("${events.file:target/events_log.txt}")
     String fileName;
 
@@ -40,5 +40,11 @@ public class FileEventLogger implements EventLogger {
         if(file.exists() && !file.canWrite()) {
             throw new IOException("Can't write in this file" + fileName);
         }
+    }
+
+    @Value("File logger")
+    @Override
+    protected void setName(String name) {
+        this.name = name;
     }
 }
