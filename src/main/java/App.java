@@ -14,11 +14,17 @@ public class App {
     Client client;
     EventLogger defaultLogger;
     Map<EventType, EventLogger> loggers;
+    private String startupMessage;
 
     public static void main(String[] args) {
-        @SuppressWarnings("resource") // We will remove this suppress in further lessons
+
         ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) ctx.getBean("app");
+
+        System.out.println(app.startupMessage);
+
+        Client client = ctx.getBean(Client.class);
+        System.out.println("Client says: " + client.getGreeting());
 
         Event event = ctx.getBean(Event.class);
         app.logEvent(EventType.INFO, event, "Some event for user 1");
@@ -50,5 +56,13 @@ public class App {
             logger = defaultLogger;
         }
         logger.logEvent(event);
+    }
+
+    public void setStartupMessage(String startupMessage) {
+        this.startupMessage = startupMessage;
+    }
+
+    public EventLogger getDefaultLogger() {
+        return defaultLogger;
     }
 }

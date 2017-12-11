@@ -6,6 +6,7 @@ package beans;
 public class Client {
     String id;
     String fullName;
+    String greeting;
 
     public String getGreeting() {
         return greeting;
@@ -14,8 +15,6 @@ public class Client {
     public void setGreeting(String greeting) {
         this.greeting = greeting;
     }
-
-    String greeting;
 
     public Client(String id, String fullName) {
         this.id = id;

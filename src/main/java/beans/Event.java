@@ -1,6 +1,7 @@
 package beans;
 
 import java.text.DateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,6 +15,11 @@ public class Event {
     private String msg;
     private Date date;
     private DateFormat dateFormat;
+
+    public static boolean isDay(int start, int end) {
+        LocalTime time = LocalTime.now();
+        return time.getHour() > start && time.getHour() < end;
+    }
 
     public Event(Date date, DateFormat dateFormat) {
         this.id = AUTO_ID.getAndIncrement();
