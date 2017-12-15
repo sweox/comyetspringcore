@@ -1,5 +1,6 @@
 package core;
 
+import core.aspects.StatisticsAspect;
 import core.beans.Client;
 import core.beans.Event;
 import core.beans.EventType;
@@ -36,6 +37,9 @@ public class App {
             + "'. Default logger is ' + app.defaultLogger.name }")
     private String startupMessage;
 
+    @Autowired
+    private StatisticsAspect statisticsAspect;
+
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
@@ -62,6 +66,8 @@ public class App {
         event = ctx.getBean(Event.class);
         app.logEvent(EventType.INFO, event, "Some event for 4");
 
+        app.outputLoggingCounter();
+
         ctx.close();
     }
 
@@ -85,5 +91,14 @@ public class App {
 
     public EventLogger getDefaultLogger() {
         return defaultLogger;
+    }
+
+    private void outputLoggingCounter() {
+        if (statisticsAspect != null) {
+            System.out.println("Loggers statistics. Number of calls: ");
+            for (Map.Entry<Class<?>, Integer> entry: statisticsAspect.getCounter().entrySet()) {
+                System.out.println("    " + entry.getKey().getSimpleName() + ": " + entry.getValue());
+            }
+        }
     }
 }

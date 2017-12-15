@@ -55,4 +55,10 @@ public class CacheFileEventLogger extends FileEventLogger {
             System.out.println("Events has been cached after destroy");
         }
     }
+
+    @Value("#{fileEventLogger.name + ' with cache'}")
+    @Override
+    protected void setName(String name) {
+        this.name = name;
+    }
 }
