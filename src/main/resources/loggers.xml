@@ -38,7 +38,7 @@
                 <ref bean="fileEventLogger"/>
             </list>
         </constructor-arg>-->
-        <property name="name" value="#{'Combined ' + combinedEventLogger.loggers.![name].toString()}"/>
+        <property name="name" value="#{'Combined ' + combinedLoggersList.![name].toString()}"/>
     </bean>
 
 

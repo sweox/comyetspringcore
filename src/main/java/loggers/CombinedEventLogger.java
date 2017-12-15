@@ -13,7 +13,7 @@ public class CombinedEventLogger extends AbstractLogger {
 
     private final Collection<EventLogger> loggers;
 
-    public CombinedEventLogger(List<EventLogger> loggers) {
+    public CombinedEventLogger(Collection<EventLogger> loggers) {
         this.loggers = loggers;
     }
 
